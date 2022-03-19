@@ -15,7 +15,7 @@ public class DummyBehaviour : MonoBehaviour
     public void Damage()
     {
         Tom.SetDamage(10);
-        if (Tom.Healthbar.CurrentHealth <= 0)
+        if (Tom.GetCurrentHealth() <= 0)
         {
             Cut();
         }
@@ -25,15 +25,13 @@ public class DummyBehaviour : MonoBehaviour
     void Start()
     {
         Tom = new Enemy.Enemy("Tom", 50, "Enemy1", "Healthbar");
-
-        Tom.Healthbar.SetHealthbarPosition();
     }
 
     private void Update()
     {
-        Tom.Healthbar.FollowCamera(Camera.gameObject.transform.position);
+        Tom.FollowCamera(Camera.gameObject.transform.position);
 
-        if (Input.GetKeyDown(KeyCode.Space) && Tom.Healthbar.CurrentHealth > 0)
+        if (Input.GetKeyDown(KeyCode.Space) && Tom.GetCurrentHealth() > 0)
         {
             Damage();
         }

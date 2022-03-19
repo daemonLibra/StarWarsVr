@@ -4,7 +4,7 @@ namespace Enemy
 {
     public class Enemy : Object
     {
-        public Healthbar.Healthbar Healthbar;
+        private Healthbar.Healthbar _healthbar;
         private GameObject _enemyObject;
 
         public Enemy(string Name, float MaxHealth, string DummyType, string HealthbarType)
@@ -12,18 +12,34 @@ namespace Enemy
             _enemyObject = GameObject.FindGameObjectWithTag(DummyType);
             _enemyObject.name = Name;
 
-            Healthbar = new Healthbar.Healthbar(HealthbarType, MaxHealth)
+            _healthbar = new Healthbar.Healthbar(HealthbarType, MaxHealth)
             {
                 CurrentHealth = MaxHealth
             };
+
+            _healthbar.SetHealthbarPosition();
         }
 
+        //the healthbar follows the direction of the camera
+        public void FollowCamera(Vector3 CameraPosition)
+        {
+            _healthbar.FollowCamera(CameraPosition);
+        }
+
+        //get the current health of the healthbar object
+        public float GetCurrentHealth() 
+        {
+            return _healthbar.CurrentHealth;
+        }
+
+        //subtracts the damage value from the current health and updates the healthbar size
         public void SetDamage(float Damage) 
         {
-            Healthbar.CurrentHealth -= Damage;
-            Healthbar.ChangeHealthBarSize();
+            _healthbar.CurrentHealth -= Damage;
+            _healthbar.ChangeHealthBarSize();
         }
 
+        //Splits the object into two smaller pieces
         public void SplitObject() 
         {
             Transform transformObject = _enemyObject.transform;
