@@ -124,6 +124,51 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &121012128
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 121012130}
+  - component: {fileID: 121012129}
+  m_Layer: 0
+  m_Name: DummyController
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &121012129
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121012128}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 44bdddbbf6d83524e8de843624cd475f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Tom: {fileID: 0}
+  Camera: {fileID: 1725982592}
+--- !u!4 &121012130
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 121012128}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 62.499237, y: -55.334213, z: 25.878464}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &407348346
 GameObject:
   m_ObjectHideFlags: 0
@@ -157,8 +202,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44bdddbbf6d83524e8de843624cd475f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 407348346}
-  HealthBar: {fileID: 0}
+  Tom: {fileID: 0}
   Camera: {fileID: 0}
 --- !u!136 &407348348
 CapsuleCollider:
@@ -1095,16 +1139,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1508468977135138826, guid: 55b255b38710b524c9059830b433b07a,
-        type: 3}
-      propertyPath: Camera
-      value: 
-      objectReference: {fileID: 1725982592}
-    - target: {fileID: 1508468977135138826, guid: 55b255b38710b524c9059830b433b07a,
-        type: 3}
-      propertyPath: HealthBar
-      value: 
-      objectReference: {fileID: 1120794184}
     - target: {fileID: 1508468977135138828, guid: 55b255b38710b524c9059830b433b07a,
         type: 3}
       propertyPath: m_Name

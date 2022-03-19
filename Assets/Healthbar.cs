@@ -7,27 +7,41 @@ namespace Healthbar
     public class Healthbar : Object
     {
         private float _maxHealth;
+        private float _currentHealth;
+        private GameObject _healthbarObject;
+        private readonly float _healthbarLength = 20;
         public float MaxHealth
         {
             get { return _maxHealth; }
-            set { _maxHealth = value; }
         }
-
-        private readonly float HealthbarLength = 20;
-
-        private float _currentHealth;
         public float CurrentHealth
         {   
             get { return _currentHealth; }
             set { _currentHealth = value; } 
         }
 
-        public GameObject HealthbarObject = GameObject.FindGameObjectWithTag("Healthbar");
+        public Healthbar(string GameObjectTag, float MaxHealth) 
+        {
+            _maxHealth = MaxHealth;
+            _healthbarObject = GameObject.FindGameObjectWithTag(GameObjectTag);
+        }
 
-        public void ChangeHealthBar()
+        public void ChangeHealthBarSize()
         {
             float BarLength = _currentHealth / MaxHealth;
-            HealthbarObject.transform.localScale = new Vector3(HealthbarLength * BarLength, HealthbarObject.transform.localScale.y, HealthbarObject.transform.localScale.z);
+            _healthbarObject.transform.localScale = new Vector3(_healthbarLength * BarLength, _healthbarObject.transform.localScale.y, _healthbarObject.transform.localScale.z);
+        }
+
+        public void SetHealthbarPosition()
+        {
+            _healthbarObject.transform.localPosition = new Vector3(_healthbarObject.transform.localPosition.x, _healthbarObject.transform.localPosition.y, _healthbarObject.transform.localPosition.z);
+        }
+
+        public void FollowCamera(Vector3 CameraPosition)
+        {
+            Vector3 relPos = _healthbarObject.transform.position - CameraPosition;
+            Quaternion rot = Quaternion.LookRotation(relPos);
+            _healthbarObject.transform.localRotation = rot;
         }
 
     }
