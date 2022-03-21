@@ -9,7 +9,7 @@ namespace Healthbar
         private float _maxHealth;
         private float _currentHealth;
         private GameObject _healthbarObject;
-        private readonly float _healthbarLength = 20;
+        private readonly float _healthbarLength = 2;
         public float MaxHealth
         {
             get { return _maxHealth; }
@@ -20,31 +20,43 @@ namespace Healthbar
             set { _currentHealth = value; } 
         }
 
-        //the healthbar follows the direction of the camera
-        public void FollowCamera(Vector3 CameraPosition)
+        public Healthbar(string gameObjectTag, float maxHealth)
         {
-            Vector3 relPos = _healthbarObject.transform.position - CameraPosition;
-            Quaternion rot = Quaternion.LookRotation(relPos);
-            _healthbarObject.transform.localRotation = rot;
+
+            _healthbarObject = GameObject.FindGameObjectWithTag(gameObjectTag);
+
+            if (_healthbarObject is null)
+            {
+                Debug.Log($"No dummy object found with the tag: {gameObjectTag}");
+            }
+            else
+            {
+                _maxHealth = maxHealth;
+            }
+
         }
 
-        public Healthbar(string GameObjectTag, float MaxHealth) 
+        //the healthbar follows the direction of the camera
+        public void FollowCamera(Vector3 cameraPosition)
         {
-            _maxHealth = MaxHealth;
-            _healthbarObject = GameObject.FindGameObjectWithTag(GameObjectTag);
+            Vector3 relPos = _healthbarObject.transform.position - cameraPosition;
+            Quaternion rot = Quaternion.LookRotation(relPos);
+            _healthbarObject.transform.localRotation = rot;
         }
 
         //change the healthbar size
         public void ChangeHealthBarSize()
         {
-            float BarLength = _currentHealth / MaxHealth;
-            _healthbarObject.transform.localScale = new Vector3(_healthbarLength * BarLength, _healthbarObject.transform.localScale.y, _healthbarObject.transform.localScale.z);
+            Transform transform = _healthbarObject.transform;
+            float barLength = _currentHealth / MaxHealth;
+            transform.localScale = new Vector3(_healthbarLength * barLength, transform.localScale.y, transform.localScale.z);
         }
 
         //set the healthbar over the object
-        public void SetHealthbarPosition()
+        public void SetHealthbarPosition(Vector3 enemyPosition)
         {
-            _healthbarObject.transform.localPosition = new Vector3(_healthbarObject.transform.localPosition.x, _healthbarObject.transform.localPosition.y, _healthbarObject.transform.localPosition.z);
+            Transform transform = _healthbarObject.transform;
+            transform.localPosition = new Vector3(enemyPosition.x, enemyPosition.y * 2.2f , enemyPosition.z);
         }
 
     }
