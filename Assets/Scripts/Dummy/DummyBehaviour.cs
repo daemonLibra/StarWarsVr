@@ -8,6 +8,7 @@ public class DummyBehaviour : MonoBehaviour
     public GameObject DummyPrefab;
     public GameObject HealthbarPrefab;
     public float HealthbarLength;
+    private Transform playerCamera;
 
     public void Cut()
     {
@@ -29,10 +30,14 @@ public class DummyBehaviour : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-       Tom = Dummy.CreateInstance("Tom", 50, DummyPrefab, HealthbarPrefab, HealthbarLength);
+        Tom = Dummy.CreateInstance("Tom", 50, DummyPrefab, HealthbarPrefab, HealthbarLength);
+        playerCamera = GameObject.FindGameObjectWithTag("PlayerCamera").transform;
     }
 
     private void Update()
     {
+        Vector3 relPos = HealthbarPrefab.transform.position - playerCamera.position;
+        Quaternion rot = Quaternion.LookRotation(relPos);
+        HealthbarPrefab.transform.localRotation = rot;
     }
 }

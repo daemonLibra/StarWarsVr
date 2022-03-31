@@ -6,6 +6,10 @@ TagManager:
   tags:
   - TrainingBallTag
   - hand
+  - WeaponTag
+  - Enemy1
+  - Healthbar
+  - PlayerCamera
   layers:
   - Default
   - TransparentFX

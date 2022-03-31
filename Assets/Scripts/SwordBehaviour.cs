@@ -31,28 +31,28 @@ public class SwordBehaviour : MonoBehaviour
         _swordObject.transform.localPosition = new Vector3(localHand.x, localHand.y, localHand.z + 0.02f);
     }
 
-    void Update()
-    {
-        Transform swordTransform = _swordObject.transform;
+    //void Update()
+    //{
+    //    Transform swordTransform = _swordObject.transform;
 
-        if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch))
-        {
-            Rigidbody swordBody = _swordObject.GetComponent<Rigidbody>();
-            swordBody.velocity = Vector3.zero;
-            swordBody.angularVelocity = Vector3.zero;
-            _useForce = !_useForce;
-        }
-        if (Vector3.Distance(swordTransform.position, _handObject.transform.position) > 0.1f)
-        {
-            if (_useForce)
-            {
-                float step = 2f * Time.deltaTime; // calculate distance to move
-                swordTransform.position = Vector3.MoveTowards(swordTransform.position, _handObject.transform.position, step);
-            }
-        } 
-        else
-        {
-            _useForce = false;
-        }
-    }
+    //    if (OVRInput.GetDown(OVRInput.Button.Two, OVRInput.Controller.RTouch))
+    //    {
+    //        Rigidbody swordBody = _swordObject.GetComponent<Rigidbody>();
+    //        swordBody.velocity = Vector3.zero;
+    //        swordBody.angularVelocity = Vector3.zero;
+    //        _useForce = !_useForce;
+    //    }
+    //    if (Vector3.Distance(swordTransform.position, _handObject.transform.position) > 0.1f)
+    //    {
+    //        if (_useForce)
+    //        {
+    //            float step = 2f * Time.deltaTime; // calculate distance to move
+    //            swordTransform.position = Vector3.MoveTowards(swordTransform.position, _handObject.transform.position, step);
+    //        }
+    //    } 
+    //    else
+    //    {
+    //        _useForce = false;
+    //    }
+    //}
 }

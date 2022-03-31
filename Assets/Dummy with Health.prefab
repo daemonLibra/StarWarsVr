@@ -131,6 +131,7 @@ MonoBehaviour:
   DummyPrefab: {fileID: 6222340448455628864}
   HealthbarPrefab: {fileID: 7726219340559994982}
   HealthbarLength: 4
+  PlayerCamera: {fileID: 0}
 --- !u!114 &4702160039143636351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -221,7 +222,8 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: -5771338034066750935, guid: 312aaea7f034c734d9f1a359c9d77253, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: 312aaea7f034c734d9f1a359c9d77253, type: 3}
 --- !u!1 &7726219340559994982 stripped
 GameObject:
